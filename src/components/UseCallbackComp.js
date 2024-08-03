@@ -14,6 +14,10 @@ const UseCallbackComp = () => {
 
   const handleInputChange = (e) => setInput(e.target.value);
 
+  const handleSkillDelete = useCallback((skillToDelete) => {
+    setSkills((prevSkills) => prevSkills.filter((skill) => skill !== skillToDelete));
+  }, []);
+
   return (
     <div>
       <h1 id="heading">Manage Your Skills</h1>
@@ -26,7 +30,7 @@ const UseCallbackComp = () => {
       <button id="skill-add-btn" onClick={addSkill}>
         Add Skill
       </button>
-      <SkillList skills={skills} />
+      <SkillList skills={skills} onSkillDelete={handleSkillDelete} />
     </div>
   );
 };
