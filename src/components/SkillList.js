@@ -1,16 +1,15 @@
 import React, { useCallback } from 'react';
 
-const SkillList = ({ skills }) => {
+const SkillList = ({ skills, onSkillDelete }) => {
   const deleteSkill = useCallback(
     (skillToDelete) => {
-      skills = skills.filter((skill) => skill !== skillToDelete);
-      setSkills(skills);
+      onSkillDelete(skillToDelete);
     },
-    [skills]
+    [onSkillDelete]
   );
 
   return (
-    <ul>
+    <ul id="skill-list">
       {skills.map((skill, idx) => (
         <li
           key={idx}
